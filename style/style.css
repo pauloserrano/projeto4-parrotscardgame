@@ -32,7 +32,7 @@ main{
     position: relative;
     width: 120px;
     height: 150px;
-    margin: 0 16px;
+    margin: 16px;
     border-radius: 5px;
     border: 1px solid #99CEA8;
     background-color: #A7E9AF;
@@ -58,7 +58,36 @@ main{
 }
 
 .card-back{
-    background: url(../assets/images/bobrossparrot.gif) no-repeat center;
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: 60%;
     transform: rotateY(180deg);
+}
+
+.card-back.bobrossparrot{
+    background-image: url(../assets/images/bobrossparrot.gif);
+}
+
+.card-back.explodyparrot{
+    background-image: url(../assets/images/explodyparrot.gif);
+}
+
+.card-back.fiestaparrot{
+    background-image: url(../assets/images/fiestaparrot.gif);
+}
+
+.card-back.metalparrot{
+    background-image: url(../assets/images/metalparrot.gif);
+}
+
+.card-back.revertitparrot{
+    background-image: url(../assets/images/revertitparrot.gif);
+}
+
+.card-back.tripletsparrot{
+    background-image: url(../assets/images/tripletsparrot.gif);
+}
+
+.card-back.unicornparrot{
+    background-image: url(../assets/images/unicornparrot.gif);
 }
