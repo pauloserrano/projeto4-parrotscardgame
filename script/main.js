@@ -2,6 +2,9 @@
 const main = document.querySelector('main.board')
 
 // Variables
+let cardStack = []
+let acertos = 0
+let deckSize = 8
 let deckImages = [
     'bobrossparrot',
     'explodyparrot',
@@ -42,9 +45,8 @@ const shuffleDeck = (deck) => {
 }
 
 
-const setGame = () => {
-    // const deckSize = getDeckSize()
-    const deckSize = 8
+const setBoard = () => {
+    // deckSize = getDeckSize()
     const deckCards = getDeckCards(deckSize)
 
     for (let i = 0; i < deckCards.length; i++){
@@ -52,10 +54,26 @@ const setGame = () => {
     }
 }
 
+const matchHandler = () => {
+    const firstCard = cardStack[0].querySelector('.card-back')
+    const secondCard = cardStack[1].querySelector('.card-back')
+    const isMatch = firstCard.classList[1] === secondCard.classList[1]
+
+    if (isMatch) {
+        acertos += 1
+    
+    } else {
+        cardStack.forEach(card => card.classList.remove('flipped'))
+    
+    }
+    cardStack = []
+    console.log(acertos, firstCard, secondCard)
+}
+
 
 const cardTemplate = (cardImage) => {
     return ` 
-        <div class="card flipped" onclick="this.classList.toggle('flipped')">
+        <div class="card">
             <div class="card-front"></div>
             <div class="card-back ${cardImage}"></div>
         </div>
@@ -63,12 +81,22 @@ const cardTemplate = (cardImage) => {
 }
 
 
-const flipCard = (e) => {
-    e.classList.toggle('.flipped')
-}
-
-
 // Events
-window.addEventListener('load', () => {
-    setGame()
+let gameOver = false
+
+setBoard()
+const cards = document.querySelectorAll('.card')
+    
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        const isFlipped = card.classList.contains('flipped')
+
+        if (!isFlipped){
+            card.classList.add('flipped')
+            cardStack.push(card)
+        
+        } if (cardStack.length === 2){
+            setTimeout(matchHandler, 500)
+        }
+    })
 })
