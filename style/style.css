@@ -1,0 +1,60 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 24px;
+    background-color: #EEF9BF;
+}
+
+h1{
+    font-size: 56px;
+    font-weight: bold;
+    line-height: 2.5em;
+    text-align: center;
+    color: #75B79E;
+}
+
+main{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 120px;
+    height: 150px;
+    border-radius: 5px;
+    border: 1px solid #99CEA8;
+    background-color: #A7E9AF;
+    transform-style: preserve-3d;
+    transition: all linear .4s;
+    cursor: pointer;
+}
+
+.card.flipped{
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card-front{
+    background: url(../assets/images/front.png) no-repeat center;
+    background-size: 100px;
+}
+
+.card-back{
+    background: url(../assets/images/bobrossparrot.gif) no-repeat center;
+    background-size: 75px;
+    transform: rotateY(180deg);
+}
