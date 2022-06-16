@@ -96,7 +96,7 @@ cards.forEach(card => {
             cardStack.push(card)
         
         } if (cardStack.length === 2){
-            setTimeout(matchHandler, 500)
+            setTimeout(matchHandler, 1000)
         }
     })
 })
