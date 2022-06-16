@@ -6,20 +6,23 @@ body{
     width: 100%;
     min-height: 100vh;
     padding: 0 24px;
+    font-family: 'Roboto', sans-serif;
     background-color: #EEF9BF;
 }
 
 h1{
     font-size: 56px;
     font-weight: bold;
-    line-height: 2.5em;
+    margin: 1em 0;
     text-align: center;
     color: #75B79E;
 }
 
 main{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0 24px;
 }
 
 .card{
@@ -29,6 +32,7 @@ main{
     position: relative;
     width: 120px;
     height: 150px;
+    margin: 0 16px;
     border-radius: 5px;
     border: 1px solid #99CEA8;
     background-color: #A7E9AF;
@@ -50,11 +54,11 @@ main{
 
 .card-front{
     background: url(../assets/images/front.png) no-repeat center;
-    background-size: 100px;
+    background-size: 80%;
 }
 
 .card-back{
     background: url(../assets/images/bobrossparrot.gif) no-repeat center;
-    background-size: 75px;
+    background-size: 60%;
     transform: rotateY(180deg);
 }
