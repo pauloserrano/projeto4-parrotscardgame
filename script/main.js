@@ -7,6 +7,7 @@ let cardStack = []
 let matches = 0
 let moves = 0
 let deckSize
+let clockInterval
 let deckImages = [
     'bobrossparrot',
     'explodyparrot',
@@ -63,6 +64,8 @@ const setBoard = () => {
     for (let i = 0; i < deckCards.length; i++){
         main.innerHTML += cardTemplate(deckCards[i])
     }
+
+    clockInterval = setInterval(clockTick, 1000)
 }
 
 const clockTick = () => {
@@ -111,6 +114,7 @@ const matchHandler = () => {
             restart = prompt('Por favor digite apenas "sim" ou "não"')
         }
 
+        clearInterval(clockInterval)
         if (restart == 'sim'){
             resetGame()
             setBoard()
@@ -118,7 +122,6 @@ const matchHandler = () => {
         
         } else if (restart == 'não'){
             alert('Obrigado por jogar! =)')
-            clearInterval(clockInterval)
         }
     }
 }
@@ -137,5 +140,4 @@ const cardTemplate = (cardImage) => {
 // Jump Start
 resetGame()
 setBoard()
-let clockInterval = setInterval(clockTick, 1000)
 runGame()
