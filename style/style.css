@@ -104,3 +104,13 @@ main{
 .card-back.unicornparrot{
     background-image: url(../assets/images/unicornparrot.gif);
 }
+
+@media (max-width: 250px){
+    body, main{
+        padding: 0;
+    }
+
+    h1{
+        font-size: 20vw;
+    }
+}
