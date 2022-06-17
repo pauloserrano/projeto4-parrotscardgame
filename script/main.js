@@ -118,6 +118,7 @@ const matchHandler = () => {
         
         } else if (restart == 'não'){
             alert('Obrigado por jogar! =)')
+            clearInterval(clockInterval)
         }
     }
 }
@@ -136,5 +137,5 @@ const cardTemplate = (cardImage) => {
 // Jump Start
 resetGame()
 setBoard()
-setInterval(clockTick, 1000)
+let clockInterval = setInterval(clockTick, 1000)
 runGame()

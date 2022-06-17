@@ -105,7 +105,7 @@ main{
     background-image: url(../assets/images/unicornparrot.gif);
 }
 
-@media (max-width: 250px){
+@media (max-width: 275px){
     body, main{
         padding: 0;
     }
