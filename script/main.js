@@ -1,5 +1,6 @@
 // HTML Elements
 const main = document.querySelector('main.board')
+const clock = document.querySelector('.clock span')
 
 // Variables
 let cardStack = []
@@ -31,8 +32,8 @@ const getDeckSize = () => {
 
 
 const getDeckCards = (size) => {
-    const maxCards = size / 2
-    const cutDeck = shuffleDeck(deckImages).slice(0, maxCards)
+    const maxImages = size / 2
+    const cutDeck = shuffleDeck(deckImages).slice(0, maxImages)
 
     for (let i = 0; cutDeck.length < size; i++){
         cutDeck.push(cutDeck[i])
@@ -50,6 +51,7 @@ const shuffleDeck = (deck) => {
 const resetGame = () => {
     matches = 0
     moves = 0
+    clock.innerHTML = 0
     main.innerHTML = ''
 }
 
@@ -63,8 +65,11 @@ const setBoard = () => {
     }
 }
 
+const clockTick = () => {
+    clock.innerHTML = Number(clock.innerHTML) + 1
+}
+
 const runGame = () => {
-    setBoard()
     const cards = document.querySelectorAll('.card')
         
     cards.forEach(card => {
@@ -78,7 +83,6 @@ const runGame = () => {
             
             } if (cardStack.length === 2){
                 setTimeout(matchHandler, 1000)
-                console.log(matches, deckSize)
             }
         })
     })
@@ -96,11 +100,11 @@ const matchHandler = () => {
         cardStack.forEach(card => card.classList.remove('flipped'))
     
     }
+
     cardStack = []
-    console.log(matches, firstCard, secondCard)
 
     if (matches === deckSize / 2){
-        alert(`Parabéns! Você ganhou em ${moves} jogadas!`)
+        alert(`Parabéns! Você ganhou em ${moves} jogadas e ${clock.innerHTML} segundos!`)
         let restart = prompt('Deseja jogar novamente?\n(Digite sim ou não)')
         
         while (restart != 'sim' && restart != 'não'){
@@ -109,6 +113,7 @@ const matchHandler = () => {
 
         if (restart == 'sim'){
             resetGame()
+            setBoard()
             runGame()
         
         } else if (restart == 'não'){
@@ -128,5 +133,8 @@ const cardTemplate = (cardImage) => {
 }
 
 
-// Events
+// Jump Start
+resetGame()
+setBoard()
+setInterval(clockTick, 1000)
 runGame()

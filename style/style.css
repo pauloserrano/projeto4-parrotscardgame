@@ -13,9 +13,22 @@ body{
 h1{
     font-size: 56px;
     font-weight: bold;
-    margin: 1em 0;
+    margin: 1em 0 16px 0;
     text-align: center;
     color: #75B79E;
+}
+
+.clock{
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.clock span{
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
 main{
