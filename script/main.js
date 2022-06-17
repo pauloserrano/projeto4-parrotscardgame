@@ -21,6 +21,7 @@ let deckImages = [
 const getDeckSize = () => {
     let size
 
+    // Is an even number between 4 and 14
     while (size % 2 != 0 || size > 14 || size < 4){
         size = prompt('Com quantas cartas você deseja jogar?\n(Insira um valor par entre 4 e 14)')
     }
@@ -45,11 +46,13 @@ const shuffleDeck = (deck) => {
     return deck.sort(() => Math.random() - 0.5)
 }
 
+
 const resetGame = () => {
     matches = 0
     moves = 0
     main.innerHTML = ''
 }
+
 
 const setBoard = () => {
     deckSize = getDeckSize()
@@ -67,11 +70,11 @@ const runGame = () => {
     cards.forEach(card => {
         card.addEventListener('click', () => {
             const isFlipped = card.classList.contains('flipped')
-            moves += 1
     
-            if (!isFlipped){
-                card.classList.add('flipped')
+            if (!isFlipped && cardStack.length !== 2){
+                moves += 1
                 cardStack.push(card)
+                card.classList.add('flipped')
             
             } if (cardStack.length === 2){
                 setTimeout(matchHandler, 1000)
